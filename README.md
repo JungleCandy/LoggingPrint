@@ -1,13 +1,21 @@
 # LoggingPrint
 
-A Swift . convenience function for printing to the console only when the build setting for "Active Complilation
+Swift convenience functions for outputting to the console only when the build setting for "Active  Complilation
 Conditions" (SWIFT_ACTIVE_COMPILATION_CONDITIONS) defines `DEBUG`
 
-The textual representation is obtained from the `object` using `String(reflecting:)` which works for _any_ type. To
+Two methods are provided.
+
+- `loggingPrint()` stands in for the `print()` function.
+- `loggingDump()` stands in for the `dump()` function.
+
+For `loggingPrint()` the textual representation is obtained from the `object` using `String(reflecting:)` which works for _any_ type. To
 provide a custom format for the output make your object conform to `CustomDebugStringConvertible` and provide your
 format in the `debugDescription` parameter.
 
-Through the magic of default function parameter values, the output contains:
+For `loggingDump()` pass in the value to be dumped, and an optional string to act as a label that describes what is
+being dumped
+
+Through the magic of default function parameter values, the output for each function contains:
 
 - Whether the call is being made on the UI or a background thread.
 - The name of the file.
@@ -16,17 +24,17 @@ Through the magic of default function parameter values, the output contains:
 
 ## Requirements
 
-The latest version requires Swift 3.0 and Xcode 8.
+The latest version requires Swift 3.x and Xcode 8.
 
 ## Usage
 
-The same way as you would use a `print()` statement. 
+The same way as you would use a `print()` statement, or a `dump()` statement.
 
 ## Installation
 
 Just add the file to your project, and define `DEBUG` in your project's _Active Complilation Conditions_ setting.
 
-If you are using Carthage add this to your Cartfile
+*OR* if you are using Carthage add this to your Cartfile
 
 ``` shell
 
